@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log/slog"
 	"os"
+	"runtime"
 
 	cp "github.com/otiai10/copy"
 )
@@ -14,6 +15,8 @@ type RewriteLocalCommand struct {
 }
 
 func NewRewriteLocalCommand(frontendProject string) (*RewriteLocalCommand, error) {
+	preSetup()
+
 	command := &RewriteLocalCommand{
 		FrontendProject: frontendProject,
 		basePath:        os.Getenv("PAYTRACK_CLI_SOURCE_PATH"),
@@ -24,6 +27,24 @@ func NewRewriteLocalCommand(frontendProject string) (*RewriteLocalCommand, error
 		return nil, err
 	}
 	return command, nil
+}
+
+func preSetup() {
+	basePath := os.Getenv("PAYTRACK_CLI_SOURCE_PATH")
+	if basePath != "" {
+		return
+	}
+
+	slog.Info("variável de ambiente PAYTRACK_CLI_SOURCE_PATH não definida")
+	slog.Info("definindo variável de ambiente PAYTRACK_CLI_SOURCE_PATH")
+	system := runtime.GOOS
+	switch system {
+	case "windows":
+		os.Setenv("PAYTRACK_CLI_SOURCE_PATH", "C:/git/paytrack/fontes/")
+	case "darwin":
+		homeDir, _ := os.UserHomeDir()
+		os.Setenv("PAYTRACK_CLI_SOURCE_PATH", homeDir+"/git/paytrack/fontes/")
+	}
 }
 
 func (r RewriteLocalCommand) validateRequirements() error {
