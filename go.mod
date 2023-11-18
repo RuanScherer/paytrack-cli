@@ -1,4 +1,4 @@
-module github.com/RuanScherer/paytrack-cli
+module github.com/RuanScherer/paytrack
 
 go 1.19
 

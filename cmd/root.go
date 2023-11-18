@@ -8,9 +8,8 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:     "patrack-cli",
-	Short:   "Utilitários e auxiliares para devs da Paytrack",
-	Aliases: []string{"paytrack"},
+	Use:   "paytrack",
+	Short: "Utilitários e auxiliares para devs da Paytrack",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

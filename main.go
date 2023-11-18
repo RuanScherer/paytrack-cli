@@ -1,6 +1,6 @@
 package main
 
-import "github.com/RuanScherer/paytrack-cli/cmd"
+import "github.com/RuanScherer/paytrack/cmd"
 
 func main() {
 	cmd.Execute()

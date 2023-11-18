@@ -3,7 +3,7 @@ package cmd
 import (
 	"os"
 
-	"github.com/RuanScherer/paytrack-cli/application/ui"
+	"github.com/RuanScherer/paytrack/application/ui"
 	"github.com/spf13/cobra"
 )
 
