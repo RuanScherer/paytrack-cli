@@ -10,9 +10,6 @@ A command line interface for Paytrack devs. The goal of this project is to make 
 
 Then, you're ready to go!
 
-- versionar o projeto
-- descrever como usar
-
 # Usage
 
 Paytrack CLI can be invoked by running `paytrack` in your terminal.
